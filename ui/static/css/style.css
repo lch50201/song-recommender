@@ -283,3 +283,18 @@ main {
   color: #e07060;
 }
 .error-state.visible { display: block; }
+
+/* ── Copyright ── */
+.copyright {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(242,232,208,0.2);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ── PWA / iPhone safe area ── */
+main {
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
+}
