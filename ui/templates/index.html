@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Needle Drop — Song Recommender</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+
+  <main>
+    <div class="layout">
+
+      <!-- Left panel -->
+      <div class="left-panel">
+        <div class="brand">
+          <div class="brand-rule"></div>
+          <h1 class="brand-title">Needle<br>Drop</h1>
+          <p class="brand-sub">genre-based music discovery</p>
+          <div class="brand-rule"></div>
+        </div>
+
+        <div class="record-wrap">
+          <div class="record" id="record">
+            <div class="record-groove g1"></div>
+            <div class="record-groove g2"></div>
+            <div class="record-groove g3"></div>
+            <div class="record-label" id="record-label">
+              <div class="label-inner">
+                <div class="label-title" id="label-title">—</div>
+                <div class="label-artist" id="label-artist">pick a genre</div>
+              </div>
+            </div>
+            <div class="spindle"></div>
+          </div>
+          <div class="tonearm" id="tonearm"></div>
+          <div class="tonearm-base"></div>
+        </div>
+      </div>
+
+      <!-- Right panel -->
+      <div class="right-panel">
+
+        <p class="instruction">Select a genre, drop the needle.</p>
+
+        <div class="genre-grid">
+          {% for genre in genres %}
+          <button class="genre-btn" data-genre="{{ genre }}">{{ genre }}</button>
+          {% endfor %}
+        </div>
+
+        <div class="result-area" id="result-area">
+          <div class="result-card" id="result-card">
+
+            <div class="loading-state" id="loading">
+              <div class="spinner"></div>
+              <span>Flipping through records…</span>
+            </div>
+
+            <div class="track-info" id="track-info">
+              <div class="track-top">
+                <img id="album-art" src="" alt="Album art" class="album-art">
+                <div class="track-meta">
+                  <div class="track-genre-tag" id="track-genre-tag"></div>
+                  <div class="track-title" id="track-title"></div>
+                  <div class="track-artist" id="track-artist"></div>
+                  <div class="track-listeners" id="track-listeners"></div>
+                </div>
+              </div>
+              <a class="lastfm-link" id="lastfm-link" href="#" target="_blank" rel="noopener">
+                Listen on Last.fm &rarr;
+              </a>
+            </div>
+
+            <div class="error-state" id="error-state">
+              <span id="error-msg"></span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
